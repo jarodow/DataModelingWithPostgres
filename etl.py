@@ -31,9 +31,10 @@ def process_log_file(cur, filepath):
     t = pd.to_datetime(df['ts'], unit='ms')
     
     # insert time data records
+    #df.ts = str(pd.to_datetime(df.ts))
     time_data = [df.ts.values,t.dt.hour.values,t.dt.day.values,t.dt.week.values,t.dt.month.values,t.dt.year.values,t.dt.weekday.values]
     column_labels = pd.to_datetime(df['ts'], unit='ms')
-    time_df = pd.DataFrame(time_data, index = column_labels)
+    time_df = pd.DataFrame(time_data, columns = column_labels)
     time_df = time_df.transpose()
 
     for i, row in time_df.iterrows():
