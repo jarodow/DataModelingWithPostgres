@@ -14,10 +14,12 @@ For the design of this database I chose to use a star schema. I thought that thi
  <br>
  
 You could find the number of artist by location 
+
 %sql SELECT count(artist_id) as "Number of artist", location FROM artists group by location 
 <br>  
 
 You could find the number of users by location
+
 %sql SELECT count(user_id) as "Number of users", location FROM songplays group by location
     
     
