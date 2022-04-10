@@ -10,6 +10,8 @@ For this project I used a star schema including the following 5 tables.
 *artist_table I used this table as a dimension table. It holds information about each artist. It includes the field sof artist_id, name, location, latitude, and longitude of the artist.
 *time_table I used this table as a dimension table. It holds information about the start time of the song. It includes the start_time, hour, day, week, month, year, and weekday.
 <br>
+![image](https://user-images.githubusercontent.com/49051075/162620686-388d9373-f97e-4e3a-9a4a-1f5d86ffed6f.png)
+<br>
  # ETL Process: 
 For this process I used two files. The first file log dataset(log_data) which included the artist, auth, firstName, gender, itemSession, lastName, length, level, location, method, page, registration, sessionid, song, status, ts(timestamp), userAgent, and the userId. This was used to populate the time, artist, user, and songplays tables. 
  I second file the song(song_data) dataset which included the information of num_songs, artist_id, artist_logitude, artist_latitude, artist_location, artist_name,    song_id, title, duration, and year of the song. This was used to populate the song and songplays tables.
