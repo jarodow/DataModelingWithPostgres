@@ -26,7 +26,7 @@ def create_database():
     
     return cur, conn
 
-
+#this procedure drops the current tables using the drop_table_queries in the sql_queries.py
 def drop_tables(cur, conn):
     """
     Drops each table using the queries in `drop_table_queries` list.
@@ -35,7 +35,7 @@ def drop_tables(cur, conn):
         cur.execute(query)
         conn.commit()
 
-
+#this procedure creates the tables using the create_table_queries list in sql_queries.py
 def create_tables(cur, conn):
     """
     Creates each table using the queries in `create_table_queries` list. 
