@@ -7,7 +7,6 @@ The purpose of this database is to gain analytical insight for Sparkify into the
 For the design of this database I chose to use a star schema. I thought that this design was more appropriate since they needed the ability to run simple queries against the database. It provides a simpler way for them to query the database allowing for more flexibility to satisfy their business needs. I used the songplays table as a fact table and the other tables(user, songs, artist, and time) as dimension tables. 
 <br>
 # Database design: 
-Describe the schema, you should lay down what are the tables (fact and dimension tables) clearly. Mention, the purpose for each of them. :x:
 For this project I used a star schema including the following 5 tables.
 *songplay_table I used this as the Fact table. This table includes the fields songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, and the user_agent. This table holds information pertaining to which song the user is listening to. 
 *user_table I used this as a dimension table. It holds information about the user. It includes the fields of user_id, first_name, last_name, gender, and level.
