@@ -29,7 +29,7 @@ song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs
 (
     song_id varchar PRIMARY KEY, title varchar NOT NULL, 
-    artist_id varchar, year int, duration int NOT NULL
+    artist_id varchar, year int, duration float NOT NULL
     )
 """)
 
