@@ -4,7 +4,8 @@ import psycopg2
 import pandas as pd
 from sql_queries import *
 
-
+#This procedure opens the song_data file and inserts the song and artist records into the file
+#It passes the filepath as an argument
 def process_song_file(cur, filepath):
     # open song file
     df = pd.read_json(filepath, lines=True)
@@ -20,6 +21,11 @@ def process_song_file(cur, filepath):
     cur.execute(artist_table_insert, artist_data)
 
 
+#this procedure process the logfile
+#It passes the log_data_file as an argument filepath
+#It converts the timestamp to datatime
+#It then inserts the data into the time records
+#It then Inserts into the user table, then the songplay table
 def process_log_file(cur, filepath):
     # open log file
     df = pd.read_json(filepath, lines=True)
@@ -36,7 +42,8 @@ def process_log_file(cur, filepath):
     column_labels = pd.to_datetime(df['ts'], unit='ms')
     time_df = pd.DataFrame(time_data, columns = column_labels)
     time_df = time_df.transpose()
-
+   
+    #iterating through each row
     for i, row in time_df.iterrows():
         cur.execute(time_table_insert, list(row))
 
@@ -64,6 +71,8 @@ def process_log_file(cur, filepath):
         cur.execute(songplay_table_insert, songplay_data)
 
 
+#This procedure process the song_data file through the argument as filepath
+#It extracts the information then stores it into the 
 def process_data(cur, conn, filepath, func):
     # get all files matching extension from directory
     all_files = []
@@ -82,14 +91,21 @@ def process_data(cur, conn, filepath, func):
         conn.commit()
         print('{}/{} files processed.'.format(i, num_files))
 
-
+#this procedure connects to the database
+#then runs the process_song_file function loading the song_data
+#then runs the process_log_file funciton loading the log_data
+#then it closes the connection
 def main():
+    #connecting to the sparkifydb
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
-
+#running the process_song_file function loading the song_data file
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
+#running the process_log_file function loading the log_data file
     process_data(cur, conn, filepath='data/log_data', func=process_log_file)
 
+
+#closing the connection to the sparkify database    
     conn.close()
 
 
